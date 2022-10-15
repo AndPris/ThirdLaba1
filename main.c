@@ -18,17 +18,16 @@ int main() {
 
         while (fabs(d) >= e) {
             power = 1;
-            for (int i = 1; i <= abs(k - 1); i++) {
+            for (int i = 1; i <= abs(k) - 1; i++) {
                 power *= y;
             }
-            if (k < 0) {
-                power = 1 / power;
-            }
 
-            d = (x / power - y) / k;
+            d = (x / power - y) / abs(k);
             y += d;
         }
-        printf("y = %f", y);
+
+        if(k < 0) y = 1 / y;
+        printf("y = %f\n", y);
     } else {
         printf("Invalid data");
     }
