@@ -24,6 +24,8 @@ int main() {
 
             d = (x / power - y) / abs(k);
             y += d;
+
+            if(y == 0) y = -1;
         }
 
         if(k < 0) y = 1 / y;
