@@ -2,9 +2,10 @@
 #include <math.h>
 
 int main() {
-    float x, e, y = 1, d = 1, power;
+    float x, y = 1, d = 1, power;
     int k;
-    char ch, cond=0;
+    short e;
+    char ch, cond;
 
     do {
         cond = 0;
@@ -16,7 +17,6 @@ int main() {
             fflush(stdin);
         };
     } while(cond);
-    cond = 0;
     ch=' ';
 
     do {
@@ -29,14 +29,13 @@ int main() {
             fflush(stdin);
         };
     } while(cond);
-    cond = 0;
     ch=' ';
 
     do {
         cond = 0;
         printf("e:");
-        scanf("%f%c", &e, &ch);
-        if(ch!='\n') {
+        scanf("%hd%c", &e, &ch);
+        if(ch!='\n' || e < 0) {
             printf("Invalid e\n");
             cond = 1;
             fflush(stdin);
@@ -48,7 +47,7 @@ int main() {
         (k < 0 && k%2==0 && x > 0) ||
         (k < 0 && k%2==-1 && x != 0)) {
 
-        while (fabs(d) >= e) {
+        while (fabs(d) >= (1 / pow(10, e))) {
             power = 1;
             for (int i = 1; i <= abs(k) - 1; i++) {
                 power *= y;
@@ -61,7 +60,7 @@ int main() {
         }
 
         if(k < 0) y = 1 / y;
-        printf("y = %f\n", y);
+        printf("y = %.*f\n", e, y);
     } else {
         printf("Incorrect x and k");
     }
